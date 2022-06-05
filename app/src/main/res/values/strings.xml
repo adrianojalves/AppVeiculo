@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">AppVehicle</string>
+    <string name="cadastro_de_ve_culos">Vehicle Registration</string>
+    <string name="tipo">Type</string>
+    <string name="carro">Car</string>
+    <string name="moto">Motorcycle</string>
+    <string name="nome">Name</string>
+    <string name="codigo">Code</string>
+    <string name="km_atual">Current KM</string>
+
+    <string name="alterar">Change</string>
+    <string name="excluir">Delete</string>
+    <string name="salvar">Save</string>
+    <string name="limpar">Clear</string>
+
+    <string name="novo_veiculo">New Vehicle</string>
+    <string name="edicao_veiculo">Vehicle Edition</string>
+    <string name="titulo_sobre">.::About::.</string>
+
+    <string name="amarelo">Yellow</string>
+    <string name="azul">Blue</string>
+    <string name="bege">Beige</string>
+    <string name="verde">Green</string>
+    <string name="vermelho">Red</string>
+    <string name="preto">Black</string>
+    <string name="prata">Silver</string>
+    <string name="rosa">Pink</string>
+    <string name="outros">Others</string>
+    <string name="cor">Color</string>
+
+    <string name="ativo">active</string>
+    <string name="inativo">inactive</string>
+
+    <string name="nome_obrigatorio">Name is required</string>
+    <string name="km_atual_obrigatoria">Current km is mandatory</string>
+    <string name="km_maior_maximo">The km cannot be greater than 999999</string>
+    <string name="km_negativa">The km cannot be negative</string>
+    <string name="campos_limpos">Clean fields</string>
+
+    <string name="status">Status</string>
+    <string name="id">Id</string>
+    <string name="novo">New</string>
+    <string name="sobre">About</string>
+    <string name="lista_de_veiculos">Vehicle List</string>
+    <string name="tipo_nao_selecionado">Type not selected</string>
+    <string name="cancelar">Cancel</string>
+    <string name="nome_aluno" translatable="false">Adriano de Jesus Alves</string>
+    <string name="nome_cusro" translatable="false">Pós-Java</string>
+    <string name="email_aluno" translatable="false">adrianojesusalves@alunos.utfpr.edu.br</string>
+    <string name="descricao_app">Vehicles App: With this APP you can control your fuel expenses and vehicle services (Cars and Motorcycles).</string>
+    <string name="ordenar_por">Order by:</string>
+
+</resources>

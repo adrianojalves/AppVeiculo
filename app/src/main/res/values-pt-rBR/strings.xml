@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppVeiculo</string>
+    <string name="cadastro_de_ve_culos">Cadastro de Veículos</string>
+    <string name="tipo">Tipo</string>
+    <string name="carro">Carro</string>
+    <string name="moto">Moto</string>
+    <string name="nome">Nome</string>
+    <string name="codigo">Código</string>
+    <string name="km_atual">KM Atual</string>
+
+    <string name="alterar">Alterar</string>
+    <string name="excluir">Excluir</string>
+    <string name="salvar">Salvar</string>
+    <string name="limpar">Limpar</string>
+
+    <string name="novo_veiculo">Novo Veículo</string>
+    <string name="edicao_veiculo" translatable="false">Edição de Veículo</string>
+    <string name="titulo_sobre">".::Sobre::."</string>
+
+    <string name="amarelo">Amarelo</string>
+    <string name="azul">Azul</string>
+    <string name="bege">Bege</string>
+    <string name="verde">Verde</string>
+    <string name="vermelho">Vermelho</string>
+    <string name="preto">Preto</string>
+    <string name="prata">Prata</string>
+    <string name="rosa">Rosa</string>
+    <string name="outros">Outros</string>
+    <string name="cor">Cor</string>
+
+    <string name="ativo">ativo</string>
+    <string name="inativo">inativo</string>
+
+    <string name="nome_obrigatorio">O nome é obrigatório</string>
+    <string name="km_atual_obrigatoria">A km atual é obrigatória</string>
+    <string name="km_maior_maximo">A km não pode ser maior que 999999</string>
+    <string name="km_negativa">A km não pode ser negativa</string>
+    <string name="campos_limpos">Campos limpos</string>
+
+    <string name="status">Status</string>
+    <string name="id">Id</string>
+    <string name="novo">Novo</string>
+    <string name="sobre">Sobre</string>
+    <string name="lista_de_veiculos">Lista de Veículos</string>
+    <string name="tipo_nao_selecionado">Tipo não selecionado</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="descricao_app">App veículos: Com este APP você pode controlar seus gastos de combustíveis e serviços de veículos (Carros e Motos).</string>
+    <string name="ordenar_por">Ordenar por:</string>
+</resources>

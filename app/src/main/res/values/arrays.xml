@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nomes_cores">
+        <item>@string/amarelo</item>
+        <item>@string/bege</item>
+        <item>@string/azul</item>
+        <item>@string/preto</item>
+        <item>@string/prata</item>
+        <item>@string/rosa</item>
+        <item>@string/verde</item>
+        <item>@string/vermelho</item>
+        <item>@string/outros</item>
+    </string-array>
+
+    <string-array name="tipos_carros">
+        <item>@string/carro</item>
+        <item>@string/moto</item>
+    </string-array>
+
+    <string-array name="tipos_ordenacao">
+        <item>@string/codigo</item>
+        <item>@string/nome</item>
+    </string-array>
+</resources>
