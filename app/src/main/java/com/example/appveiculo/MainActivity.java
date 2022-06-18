@@ -16,7 +16,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.appveiculo.daos.db.AppVeiculoDataBase;
 import com.example.appveiculo.model.dto.VeiculoDto;
+import com.example.appveiculo.utils.BackgroundTask;
 import com.example.appveiculo.utils.ConstantesUtils;
 
 import java.util.Arrays;
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         if (bundle != null){
-            System.out.println("1");
             modo = bundle.getInt(ConstantesUtils.ACTIVY_IDENTITY.MODO, ConstantesUtils.ACTIVY_IDENTITY.LIST_VEICULOS_NOVO);
 
             if (modo == ConstantesUtils.ACTIVY_IDENTITY.LIST_VEICULOS_NOVO){
@@ -71,12 +72,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void salvar(){
         if(validarCampos()){
-            Intent intent = new Intent();
-            intent.putExtra(ConstantesUtils.PARAMETROS.VEICULO_DTO, veiculo);
+            System.out.println("validou campos");
+            new BackgroundTask(MainActivity.this){
 
-            setResult(Activity.RESULT_OK, intent);
+                @Override
+                public void doInBackground() {
+                    AppVeiculoDataBase database = AppVeiculoDataBase.getDatabase(MainActivity.this);
 
-            finish();
+                    if(veiculo.getId()==null) {
+                        Long id = database.veiculoDao().insert(veiculo.toEntity(getResources()));
+                        veiculo.setId(id.intValue());
+                    }
+                    else{
+                        database.veiculoDao().update(veiculo.toEntity(getResources()));
+                    }
+                }
+
+                @Override
+                public void onPostExecute() {
+                    Intent intent = new Intent();
+                    intent.putExtra(ConstantesUtils.PARAMETROS.VEICULO_DTO, veiculo);
+
+                    setResult(Activity.RESULT_OK, intent);
+
+                    finish();
+                }
+            }.execute();
         }
         else{
             Toast.makeText(this,

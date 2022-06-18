@@ -125,18 +125,20 @@ public class ListarVeiculos extends AppCompatActivity {
         new BackgroundTask(ListarVeiculos.this) {
             @Override
             public void doInBackground() {
-
                 AppVeiculoDataBase database = AppVeiculoDataBase.getDatabase(ListarVeiculos.this);
 
                 listVeiculos = database.veiculoDao()
                                         .listAll()
                                         .stream()
-                                        .map(entity ->{ return VeiculoDto.toDto(entity, getResources()); })
+                                        .map(entity ->{
+                                            System.out.println(entity.getNome()+" "+entity.getId());
+                                            return VeiculoDto.toDto(entity, getResources()); })
                                         .collect(Collectors.toCollection(ArrayList::new));
             }
 
             @Override
             public void onPostExecute() {
+                jogarNaTela();
                 adapter.notifyDataSetChanged();
             }
         }.execute();

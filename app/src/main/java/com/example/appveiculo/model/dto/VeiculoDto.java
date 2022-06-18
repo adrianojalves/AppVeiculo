@@ -6,6 +6,7 @@ import com.example.appveiculo.R;
 import com.example.appveiculo.model.VeiculoEntity;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class VeiculoDto implements Serializable {
@@ -100,7 +101,17 @@ public class VeiculoDto implements Serializable {
         veiculo.setStatus(entity.getStatus());
         veiculo.setTipo(resources.getStringArray(R.array.tipos_carros)[entity.getTipo()]);
         veiculo.setNome(entity.getNome());
-
         return veiculo;
+    }
+
+    public VeiculoEntity toEntity(Resources resources){
+        VeiculoEntity entity  = new VeiculoEntity();
+        entity.setId(this.getId());
+        entity.setCor(Arrays.asList(resources.getStringArray(R.array.nomes_cores)).indexOf(this.getCor()));
+        entity.setKmAtual(this.getKmAtual());
+        entity.setStatus(this.getStatus());
+        entity.setTipo(Arrays.asList(resources.getStringArray(R.array.tipos_carros)).indexOf(this.getTipo()));
+        entity.setNome(this.getNome());
+        return entity;
     }
 }
