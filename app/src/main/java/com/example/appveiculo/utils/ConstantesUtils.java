@@ -16,4 +16,17 @@ public class ConstantesUtils {
 
         public static final String ORDENACAO_LISTA_VEICULO="ORDN_LIST_VEIC";
     }
+
+    public interface VEICULOS_DB{
+        public static final String TABLE_NAME="veiculos";
+        public interface COLUNAS{
+            public static final String
+                             ID="id",
+                             TIPO="tipo",
+                             NOME="nome",
+                             KM_ATUAL="km_atual",
+                             COR="cor",
+                             status="STATUS";
+        }
+    }
 }

@@ -1,5 +1,10 @@
 package com.example.appveiculo.model.dto;
 
+import android.content.res.Resources;
+
+import com.example.appveiculo.R;
+import com.example.appveiculo.model.VeiculoEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -85,5 +90,17 @@ public class VeiculoDto implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public static VeiculoDto toDto(VeiculoEntity entity, Resources resources){
+        VeiculoDto veiculo  = new VeiculoDto();
+        veiculo.setId(entity.getId());
+        veiculo.setCor(resources.getStringArray(R.array.nomes_cores)[entity.getCor()]);
+        veiculo.setKmAtual(entity.getKmAtual());
+        veiculo.setStatus(entity.getStatus());
+        veiculo.setTipo(resources.getStringArray(R.array.tipos_carros)[entity.getTipo()]);
+        veiculo.setNome(entity.getNome());
+
+        return veiculo;
     }
 }

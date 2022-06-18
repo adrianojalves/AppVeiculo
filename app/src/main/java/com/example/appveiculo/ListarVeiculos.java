@@ -18,12 +18,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 
 import com.example.appveiculo.adapters.VeiculosAdapter;
+import com.example.appveiculo.daos.db.AppVeiculoDataBase;
 import com.example.appveiculo.model.dto.VeiculoDto;
+import com.example.appveiculo.utils.BackgroundTask;
 import com.example.appveiculo.utils.ConstantesUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class ListarVeiculos extends AppCompatActivity {
     private ListView listViewVeiculos;
@@ -118,9 +121,25 @@ public class ListarVeiculos extends AppCompatActivity {
     }
 
     private void carregarLista() {
-        if(listVeiculos == null){
-            listVeiculos = new ArrayList<>();
-        }
+        //alternativa ao asynktask depreciado
+        new BackgroundTask(ListarVeiculos.this) {
+            @Override
+            public void doInBackground() {
+
+                AppVeiculoDataBase database = AppVeiculoDataBase.getDatabase(ListarVeiculos.this);
+
+                listVeiculos = database.veiculoDao()
+                                        .listAll()
+                                        .stream()
+                                        .map(entity ->{ return VeiculoDto.toDto(entity, getResources()); })
+                                        .collect(Collectors.toCollection(ArrayList::new));
+            }
+
+            @Override
+            public void onPostExecute() {
+                adapter.notifyDataSetChanged();
+            }
+        }.execute();
     }
 
     private void instanciarCampos() {
