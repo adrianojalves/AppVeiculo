@@ -47,4 +47,10 @@
     <string name="cancelar">Cancelar</string>
     <string name="descricao_app">App veículos: Com este APP você pode controlar seus gastos de combustíveis e serviços de veículos (Carros e Motos).</string>
     <string name="ordenar_por">Ordenar por:</string>
+
+    <string name="confirmacao">Confirmação</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="pergunta_exclusao">"Deseja excluir o registro: "</string>
+    <string name="operacao_cancelada">Nenhuma ação executada</string>
 </resources>

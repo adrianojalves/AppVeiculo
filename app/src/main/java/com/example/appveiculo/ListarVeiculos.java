@@ -2,6 +2,7 @@ package com.example.appveiculo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
@@ -22,6 +24,7 @@ import com.example.appveiculo.daos.db.AppVeiculoDataBase;
 import com.example.appveiculo.model.dto.VeiculoDto;
 import com.example.appveiculo.utils.BackgroundTask;
 import com.example.appveiculo.utils.ConstantesUtils;
+import com.example.appveiculo.utils.DialogsUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -110,9 +113,48 @@ public class ListarVeiculos extends AppCompatActivity {
 
         MainActivity.alterarVeiculo(this, veiculo);
     }
-    private void excluirVeiculo(){
-        listVeiculos.remove(posicaoSelecionada);
-        adapter.notifyDataSetChanged();
+
+    private void excluirVeiculo() {
+        VeiculoDto dto = listVeiculos.get(posicaoSelecionada);
+        String mensagem = getString(R.string.pergunta_exclusao) + "\n" + dto.getId() + " - " + dto.getNome();
+
+        DialogInterface.OnClickListener listener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+
+                                new BackgroundTask(ListarVeiculos.this) {
+
+                                    @Override
+                                    public void doInBackground() {
+                                        AppVeiculoDataBase dataBase = AppVeiculoDataBase.getDatabase(ListarVeiculos.this);
+
+                                        dataBase.veiculoDao().delete(dto.toEntity(getResources()));
+                                    }
+
+                                    @Override
+                                    public void onPostExecute() {
+                                        listVeiculos.remove(posicaoSelecionada);
+                                        jogarNaTela();
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }.execute();
+
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                Toast.makeText(ListarVeiculos.this,
+                                        getString(R.string.operacao_cancelada),
+                                        Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                };
+
+        DialogsUtils.confirmaAcao(this, mensagem, listener);
     }
 
     private void jogarNaTela() {

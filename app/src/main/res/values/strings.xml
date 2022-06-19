@@ -50,4 +50,9 @@
     <string name="descricao_app">Vehicles App: With this APP you can control your fuel expenses and vehicle services (Cars and Motorcycles).</string>
     <string name="ordenar_por">Order by:</string>
 
+    <string name="confirmacao">Confirmation</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
+    <string name="pergunta_exclusao">"Do you want to delete the record: "</string>
+    <string name="operacao_cancelada">No action taken</string>
 </resources>
